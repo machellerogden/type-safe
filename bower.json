@@ -1,0 +1,17 @@
+{
+  "name": "type-safe",
+  "version": "0.0.1",
+  "authors": [
+    "Mac Heller-Ogden <mac@machellerogden.com>"
+  ],
+  "description": "yet another predicate and assertion utility for type safety",
+  "main": "dist/type-safe.js",
+  "keywords": [
+    "type",
+    "typecheck",
+    "assert",
+    "assertion"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/machellerogden/type-safe"
+}
