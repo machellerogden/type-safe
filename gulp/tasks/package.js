@@ -14,9 +14,9 @@ rename = require('gulp-rename');
 uglify = require('gulp-uglify');
 
 module.exports = function () {
-    return gulp.src('src/ignition.js')
+    return gulp.src('src/type-safe.js')
         .pipe(gulp.dest('dist/'))
-        .pipe(rename('ignition.min.js'))
+        .pipe(rename('type-safe.min.js'))
         .pipe(uglify({
             preserveComments: 'some'
         }))

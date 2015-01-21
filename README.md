@@ -1,4 +1,4 @@
-# type-safe v0.0.1
+# type-safe v0.0.2
 
 Yet another predicate and assertion utility for type safety.
 

@@ -19,7 +19,7 @@ gulp = require('./gulp')([
  *
  */
 buildTask = (argv.watch) ? [ 'watch' ] : function (cb) {
-    sequence('clean', 'package', 'lint', cb);
+    sequence('clean', 'lint', 'package', cb);
 };
 gulp.task('build', buildTask);
 
