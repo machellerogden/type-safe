@@ -1,5 +1,5 @@
 /*!
- * type-safe v0.0.1 <https://github.com/machellerogden>
+ * type-safe v0.0.3 <https://github.com/machellerogden>
  * @license MIT
  * @copyright 2015 Mac Heller-Ogden <http://www.machellerogden.com/>
  * @author Mac Heller-Ogden

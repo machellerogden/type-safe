@@ -1,6 +1,6 @@
 {
   "name": "type-safe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "yet another predicate and assertion utility for type safety",
   "author": "Mac Heller-Ogden <mac@machellerogden.com>",
   "license": "MIT",
