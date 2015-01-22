@@ -1,6 +1,6 @@
-# type-safe v0.0.3
+# type-safe v0.1.0
 
-Yet another predicate and assertion utility for type safety.
+Type predicates and assertion.
 
 ## Bower Install
 

@@ -26,42 +26,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `string`', function () {
-                expect(function () {
-                    typeSafe.isString(testString, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `string`', function () {
-                expect(function () {
-                    typeSafe.isString(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isString(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertString', function () {
@@ -70,6 +34,7 @@ describe('type-safe', function () {
                 typeSafe.assertString(testString);
             }).not.toThrow();
         });
+
         it('should throw if argument is not of type `string`', function () {
             expect(function () {
                 typeSafe.assertString(testNumber);
@@ -120,40 +85,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `boolean`', function () {
-                expect(function () {
-                    typeSafe.isBoolean(true, true);
-                    typeSafe.isBoolean(false, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `boolean`', function () {
-                expect(function () {
-                    typeSafe.isBoolean(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isBoolean(undefined, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertBoolean', function () {
@@ -210,42 +141,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `number`', function () {
-                expect(function () {
-                    typeSafe.isNumber(testNumber, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `number`', function () {
-                expect(function () {
-                    typeSafe.isNumber(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNumber(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertNumber', function () {
@@ -304,42 +199,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `NaN`', function () {
-                expect(function () {
-                    typeSafe.isNan(NaN, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `NaN`', function () {
-                expect(function () {
-                    typeSafe.isNan(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNan(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertNaN', function () {
@@ -399,42 +258,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `function`', function () {
-                expect(function () {
-                    typeSafe.isFunction(testFunction, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `function`', function () {
-                expect(function () {
-                    typeSafe.isFunction(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isFunction(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertFunction', function () {
@@ -494,42 +317,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `object`', function () {
-                expect(function () {
-                    typeSafe.isObject(testObject, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `object`', function () {
-                expect(function () {
-                    typeSafe.isObject(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isObject(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertObject', function () {
@@ -589,42 +376,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `array`', function () {
-                expect(function () {
-                    typeSafe.isArray(testArray, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `object`', function () {
-                expect(function () {
-                    typeSafe.isArray(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isArray(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertArray', function () {
@@ -684,42 +435,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is of type `null`', function () {
-                expect(function () {
-                    typeSafe.isNull(null, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is not of type `null`', function () {
-                expect(function () {
-                    typeSafe.isNull(testString, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(testNumber, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(testFunction, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(testObject, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(testArray, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(NaN, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(true, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isNull(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertNull', function () {
@@ -778,42 +493,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is not of type `null` or of type `undefined`', function () {
-                expect(function () {
-                    typeSafe.isExisty(testString, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(testNumber, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(testArray, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(testObject, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(testFunction, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(NaN, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(true, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isExisty(false, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is of type `null` or of type `undefined`', function () {
-                expect(function () {
-                    typeSafe.isExisty(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isExisty(undefined, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertExisty', function () {
@@ -872,42 +551,6 @@ describe('type-safe', function () {
             });
         });
 
-        describe('when called with true as a the second argument', function () {
-            it('should not throw if first argument is not of type `null` or of type `undefined`', function () {
-                expect(function () {
-                    typeSafe.isTruthy(testString, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(testNumber, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(testArray, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(testObject, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(testFunction, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(NaN, true);
-                }).not.toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(true, true);
-                }).not.toThrow();
-            });
-            it('should throw if first argument is of type `null` or of type `undefined`', function () {
-                expect(function () {
-                    typeSafe.isTruthy(null, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(undefined, true);
-                }).toThrow();
-                expect(function () {
-                    typeSafe.isTruthy(false, true);
-                }).toThrow();
-            });
-        });
     });
 
     describe('#assertTruthy', function () {
@@ -947,10 +590,10 @@ describe('type-safe', function () {
         });
     });
 
-    describe('#export', function () {
-        it('should add all methods (except export itself) to given target object', function () {
+    describe('#decorate', function () {
+        it('should add all methods (except decorate itself) to given target object', function () {
             var target = {};
-            typeSafe.export(target);
+            typeSafe.decorate(target);
             expect(target.isExisty).toEqual(typeSafe.isExisty);
             expect(target.isTruthy).toEqual(typeSafe.isTruthy);
             expect(target.isNan).toEqual(typeSafe.isNan);
@@ -973,9 +616,8 @@ describe('type-safe', function () {
             expect(target.assertArray).toEqual(typeSafe.assertArray);
             expect(target.assertNumber).toEqual(typeSafe.assertNumber);
             expect(target.assertBoolean).toEqual(typeSafe.assertBoolean);
-            expect(target.export).not.toEqual(typeSafe.export);
+            expect(target.decorate).not.toEqual(typeSafe.decorate);
         });
     });
 
 });
-

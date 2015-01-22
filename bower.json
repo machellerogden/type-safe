@@ -1,10 +1,10 @@
 {
   "name": "type-safe",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "authors": [
     "Mac Heller-Ogden <mac@machellerogden.com>"
   ],
-  "description": "yet another predicate and assertion utility for type safety",
+  "description": "Type predicates and assertions.",
   "main": "dist/type-safe.js",
   "keywords": [
     "type",

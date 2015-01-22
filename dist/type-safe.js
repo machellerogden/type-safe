@@ -1,16 +1,18 @@
 /*!
- * type-safe v0.0.3 <https://github.com/machellerogden>
+ * type-safe v0.1.0 <https://github.com/machellerogden>
  * @license MIT
  * @copyright 2015 Mac Heller-Ogden <http://www.machellerogden.com/>
  * @author Mac Heller-Ogden
- * @summary yet another predicate and assertion utility for type safety
+ * @summary Type predicates and assertions.
  */
 !function (name, definition) {
     if (typeof module != 'undefined' && module.exports) module.exports = definition();
     else if (typeof define == 'function' && typeof define.amd == 'object') define(definition);
     else (function () { return this || (0, eval)('this'); }())[name] = definition();
 }('typeSafe', function () {
-    var isNan,
+    var isExisty,
+        isTruthy,
+        isNan,
         isNull,
         isUndefined,
         isString,
@@ -18,18 +20,7 @@
         isObject,
         isArray,
         isNumber,
-        isBoolean,
-        assertExisty,
-        assertTruthy,
-        assertNan,
-        assertNull,
-        assertUndefined,
-        assertString,
-        assertFunction,
-        assertObject,
-        assertArray,
-        assertNumber,
-        assertBoolean;
+        isBoolean;
 
     function TypeError(message) {
         this.name = 'TypeError';
@@ -37,24 +28,21 @@
     }
     TypeError.prototype = Error.prototype;
 
-    function throwTypeError (expectedType, receivedType) {
-        throw new TypeError('Expected `' + expectedType + '` and instead received `' + receivedType + '`');
+
+    function generateAssertor(predicate, formatter) {
+        return function (subject) {
+            if (!predicate(subject)) throw new TypeError(formatter(subject));
+        };
     }
 
-    function isExisty(subject, throwError) {
-        var isValid = (subject != null) ? true : false;
-        if (!isValid && throwError) throwTypeError('existy', typeof subject);
-        return isValid;
-    }
-
-    function isTruthy(subject, throwError) {
-        var isValid = ((subject !== false) && isExisty(subject)) ? true : false;
-        if (!isValid && throwError) throwTypeError('truthy', typeof subject);
-        return isValid;
+    function generateErrorFormatter(type) {
+        return function (subject) {
+            return 'Expected `' + type + '` and instead received `' + typeof subject + '`';
+        };
     }
 
     function generateTypeValidation(type) {
-        return function (subject, throwError) {
+        return function (subject) {
             var subjectType = typeof subject,
                 isNull = false,
                 isArray = false,
@@ -75,16 +63,12 @@
             } else if (subjectType !== type) {
                 isValid = false;
             }
-            if (!isValid && throwError) throwTypeError(type, subjectType);
             return isValid;
         };
     };
 
-    function generateAssertor(validation) {
-        return function (subject) {
-            return validation(subject, true);
-        };
-    }
+    isExisty = function (subject) { return (subject != null); };
+    isTruthy = function (subject) { return (subject !== false && isExisty(subject)); };
 
     isNan = generateTypeValidation('nan');
     isNull = generateTypeValidation('null');
@@ -95,18 +79,6 @@
     isArray = generateTypeValidation('array');
     isNumber = generateTypeValidation('number');
     isBoolean = generateTypeValidation('boolean');
-
-    assertExisty = generateAssertor(isExisty);
-    assertTruthy = generateAssertor(isTruthy);
-    assertNan = generateAssertor(isNan);
-    assertNull = generateAssertor(isNull);
-    assertUndefined = generateAssertor(isUndefined);
-    assertString = generateAssertor(isString);
-    assertFunction = generateAssertor(isFunction);
-    assertObject = generateAssertor(isObject);
-    assertArray = generateAssertor(isArray);
-    assertNumber = generateAssertor(isNumber);
-    assertBoolean = generateAssertor(isBoolean);
 
     return {
         isExisty: isExisty,
@@ -120,20 +92,20 @@
         isArray: isArray,
         isNumber: isNumber,
         isBoolean: isBoolean,
-        assertExisty: assertExisty,
-        assertTruthy: assertTruthy,
-        assertNan: assertNan,
-        assertNull: assertNull,
-        assertUndefined: assertUndefined,
-        assertString: assertString,
-        assertFunction: assertFunction,
-        assertObject: assertObject,
-        assertArray: assertArray,
-        assertNumber: assertNumber,
-        assertBoolean: assertBoolean,
-        export: function (target) {
-            target = (typeof target === 'object') ? target : window;
-            for (var i in this) if (this.hasOwnProperty(i) && (i !== 'export') && (target[i] == null)) target[i] = this[i];
+        assertExisty: generateAssertor(isExisty, generateErrorFormatter('existy')),
+        assertTruthy: generateAssertor(isTruthy, generateErrorFormatter('truthy')),
+        assertNan: generateAssertor(isNan, generateErrorFormatter('NaN')),
+        assertNull: generateAssertor(isNull, generateErrorFormatter('null')),
+        assertUndefined: generateAssertor(isUndefined, generateErrorFormatter('undefined')),
+        assertString: generateAssertor(isString, generateErrorFormatter('string')),
+        assertFunction: generateAssertor(isFunction, generateErrorFormatter('function')),
+        assertObject: generateAssertor(isObject, generateErrorFormatter('object')),
+        assertArray: generateAssertor(isArray, generateErrorFormatter('array')),
+        assertNumber: generateAssertor(isNumber, generateErrorFormatter('number')),
+        assertBoolean: generateAssertor(isBoolean, generateErrorFormatter('boolean')),
+        decorate: function (target) {
+            target = (typeof target === 'object') ? target : (0, eval)('this');
+            for (var i in this) if (this.hasOwnProperty(i) && (i !== 'decorate') && (target[i] == null)) target[i] = this[i];
         }
     };
 
