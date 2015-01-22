@@ -1,5 +1,5 @@
 /*!
- * type-safe v0.1.0 <https://github.com/machellerogden>
+ * type-safe v0.1.1 <https://github.com/machellerogden>
  * @license MIT
  * @copyright 2015 Mac Heller-Ogden <http://www.machellerogden.com/>
  * @author Mac Heller-Ogden
@@ -47,17 +47,21 @@
                 isNull = false,
                 isArray = false,
                 isValid = true;
-            if (subjectType === 'object') {
-                if (!(isNull = subject === null)) isArray = Object.prototype.toString.call(subject) === '[object Array]';
+            if (subjectType === 'object' && !(isNull = subject === null)) {
+                isArray = Object.prototype.toString.call(subject) === '[object Array]';
             }
-            if (type === 'nan') {
-                if (!(subjectType === 'number' && isNaN(subject))) isValid = false;
+            if (type === 'existy') {
+                isValid = (subject != null);
+            } else if (type === 'truthy') {
+                isValid = (subject !== false && subject != null);
+            } else if (type === 'nan') {
+                isValid = (subjectType === 'number' && isNaN(subject));
             } else if (type === 'number') {
-                if (isNaN(subject) || subjectType !== type) isValid = false;
+                isValid = (!isNaN(subject) && subjectType === type);
             } else if (type === 'null') {
-                if (!isNull) isValid = false;
+                isValid = isNull;
             } else if (type === 'array') {
-                if (!isArray) isValid = false;
+                isValid = isArray;
             } else if (type === 'object' && (isArray || isNull)) {
                 isValid = false;
             } else if (subjectType !== type) {
@@ -67,9 +71,8 @@
         };
     };
 
-    isExisty = function (subject) { return (subject != null); };
-    isTruthy = function (subject) { return (subject !== false && isExisty(subject)); };
-
+    isExisty = generateTypeValidation('existy');
+    isTruthy = generateTypeValidation('truthy');
     isNan = generateTypeValidation('nan');
     isNull = generateTypeValidation('null');
     isUndefined = generateTypeValidation('undefined');

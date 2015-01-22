@@ -1,4 +1,4 @@
-# type-safe v0.1.0
+# type-safe v0.1.1
 
 Type predicates and assertion.
 
